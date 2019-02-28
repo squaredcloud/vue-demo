@@ -11,14 +11,20 @@
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script>
     </script>
+    <style>
+      .default {
+        position: relative;
+        top: -48px;
+        left: 132px;
+        text-transform: capitalize;
+      }
+    </style>
   </head>
 
   <body id='body'>
     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
-          <!-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> -->
-          <!-- <h4 class="subtitle is-4">VUE DEMO</h4> -->
+        <a class="navbar-item">
           <i class="fab fa-vuejs fa-lg has-text-success"></i>
           <h4 class="title is-4">UE DEMO</h4>
         </a>
@@ -32,47 +38,12 @@
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item">
-            Home
-          </a>
 
-          <a class="navbar-item">
-            Documentation
-          </a>
-
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              More
-            </a>
-
-            <div class="navbar-dropdown">
-              <a class="navbar-item">
-                About
-              </a>
-              <a class="navbar-item">
-                Jobs
-              </a>
-              <a class="navbar-item">
-                Contact
-              </a>
-              <hr class="navbar-divider">
-              <a class="navbar-item">
-                Report an issue
-              </a>
-            </div>
-          </div>
         </div>
 
         <div class="navbar-end">
           <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-primary">
-                <strong>Sign up</strong>
-              </a>
-              <a class="button is-light">
-                Log in
-              </a>
-            </div>
+
           </div>
         </div>
       </div>
@@ -81,51 +52,61 @@
     <section class="section">
       <div class="container">
         <div class="columns">
-          <!-- <div class="column">
-
-          </div> -->
           <div class="column">
             <h1 class="title">
-                Hello World
+              Progress Bar
             </h1>
-            <p class="subtitle">
-              My first website with <strong>Bulma</strong>!
-            </p>
 
             <div class="field">
               <div class="control">
                 <div class="tags has-addons">
-                  <span class="tag is-dark">Controls</span>
-                  <span class="tag is-info">Progress</span>
+                  <span class="tag">Progress Bar</span>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <p>
+                  <progress class="progress" :class="color" :value="time" :max="max"></progress>
+                </p>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <div class="tags has-addons">
+                  <span class="tag">Controls</span>
                 </div>
               </div>
             </div>
 
-            <div class="field has-addons">
-              <p class="control">
-                <a @click="start" class="button is-outlined is-success">
-                  <span class="icon">
-                    <i class="fa fa-play"></i>
-                  </span>
-                </a>
-              </p>
-              <p class="control">
-                <a @click="restart" class="button is-outlined is-info">
-                  <span class="icon">
-                    <i class="fa fa-redo"></i>
-                  </span>
-                </a>
-              </p>
-              <p class="control">
-                <a @click="stop" class="button is-outlined is-danger">
-                  <span class="icon">
-                    <i class="fa fa-stop"></i>
-                  </span>
-                </a>
-              </p>
-            </div>
-
             <div class="columns">
+              <div class="column is-one-fifth">
+                <div class="field has-addons">
+                  <p class="control">
+                    <a @click="start" class="button is-outlined is-success">
+                      <span class="icon">
+                        <i class="fa fa-play"></i>
+                      </span>
+                    </a>
+                  </p>
+                  <p class="control">
+                    <a @click="restart" class="button is-outlined is-info">
+                      <span class="icon">
+                        <i class="fa fa-redo"></i>
+                      </span>
+                    </a>
+                  </p>
+                  <p class="control">
+                    <a @click="stop" class="button is-outlined is-danger">
+                      <span class="icon">
+                        <i class="fa fa-stop"></i>
+                      </span>
+                    </a>
+                  </p>
+                </div>
+                <span class="button default" :class="color" :disabled="time > 0">Default</span>
+              </div>
               <div class="column is-one-quarter">
                 <div class="columns">
                   <div class="column is-half">
@@ -150,16 +131,15 @@
                   </div>
                 </div>
               </div>
-              <div class="column">
-                <p>
-                  <progress class="progress" :class="color" :value="time" :max="max"></progress>
-                </p>
-              </div>
             </div>
 
-            <p class="subtitle">
-              Color Picker!
-            </p>
+            <div class="field">
+              <div class="control">
+                <div class="tags has-addons">
+                  <span :class="color" class="tag">Color</span>
+                </div>
+              </div>
+            </div>
 
             <a @click="changeColor('is-primary')" class="button is-primary">&nbsp;&nbsp;</a>
             <a @click="changeColor('is-link')" class="button is-link">&nbsp;&nbsp;</a>
@@ -167,6 +147,26 @@
             <a @click="changeColor('is-success')" class="button is-success">&nbsp;&nbsp;</a>
             <a @click="changeColor('is-warning')" class="button is-warning">&nbsp;&nbsp;</a>
             <a @click="changeColor('is-danger')" class="button is-danger">&nbsp;&nbsp;</a>
+            <a @click="changeColor('is-light')" class="button is-light">&nbsp;&nbsp;</a>
+            <a @click="changeColor('is-dark')" class="button is-dark">&nbsp;&nbsp;</a>
+            <a @click="changeColor('is-black')" class="button is-black">&nbsp;&nbsp;</a>
+
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column">
+            <h1 class="title">
+              ???
+            </h1>
+
+            <ul id="example-1">
+              <li v-for="item in items">
+                {{ item.state }}
+                <i v-if="item.state" class="far fa-hand-rock fa-2x"></i>
+
+              </li>
+            </ul>
 
           </div>
         </div>
@@ -181,7 +181,11 @@
           time:  0,
           max:   100,
           speed: 1000,
-          color: 'is-primary'
+          color: 'is-primary',
+          items: [
+            { state: true },
+            { state: true }
+          ]
         },
         mounted(){
           this.increment()
